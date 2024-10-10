@@ -18,7 +18,7 @@ public class Category {
 
     //MODIFIES: this 
     //EFFECTS: Adds a single expense to the list of expenses 
-    public void addExpense() {
+    public void addExpense(int expense) {
 
     }
 }
