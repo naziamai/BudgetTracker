@@ -43,6 +43,10 @@ public class Category {
         return this.listOfExpense;
     }
 
+    //EFFECTS: returns list of dates
+    public List<Double> getDates() {
+        return null;
+    }
     //EFFECTS: Returns the name of the category 
     public String getName(){
         return this.name;
