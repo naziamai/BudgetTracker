@@ -2,6 +2,7 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,11 +11,14 @@ import org.junit.jupiter.api.Test;
 
 public class TestCategory {
     Category testCategory;
-    List<Double> testListOfExpense;
+    List<Double> testExpenseAdded;
+    List<LocalDate> testDates;
     
     @BeforeEach
     void runBefore() {
         testCategory = new Category("Grocery", 300.00);
+        List<Double> testExpenseAdded = new ArrayList<>();
+        List<LocalDate> testDates = new ArrayList<>();
 
     }
 
@@ -27,28 +31,41 @@ public class TestCategory {
 
     @Test
     void testAddSingleExpense() {
-        testCategory.addExpense(50.00);
-        List<Double> expenseAdded = new ArrayList<>();
-        expenseAdded.add(50.00);
-        assertEquals(expenseAdded, testCategory.getListOfExpense());
+        LocalDate date1 = LocalDate.of(2024, 10, 10);
+        testCategory.addExpense(50.00, date1);
+       
+        testExpenseAdded.add(50.00);
+        assertEquals(testExpenseAdded, testCategory.getListOfExpense());
+
+        testDates.add(date1);
+        assertEquals(testExpenseAdded, testCategory.getDates());
     }
 
     @Test 
     void testAddMultipleExpense() {
-        testCategory.addExpense(60.00);
-        testCategory.addExpense(75.10);
-        List<Double> expenseAdded = new ArrayList<>();
-        expenseAdded.add(60.00);
-        expenseAdded.add(75.10);
-        assertEquals(expenseAdded, testCategory.getListOfExpense());
+        LocalDate date1 = LocalDate.of(2024, 10, 10);
+        testCategory.addExpense(60.00, date1);
+        
+        LocalDate date2 = LocalDate.of(2024, 9, 10);
+        testCategory.addExpense(75.00, date2);
+
+        
+        testExpenseAdded.add(60.00);
+        testExpenseAdded.add(75.10);
+        testDates.add(date1);
+        testDates.add(date2);
+        assertEquals(testExpenseAdded, testCategory.getListOfExpense());
+        assertEquals(testDates, testCategory.getDates());
     }
     @Test 
     void testGetRemainingLimit() {
-        testCategory.addExpense(60.00);
-        testCategory.addExpense(75.10);
-        List<Double> expenseAdded = new ArrayList<>();
-        expenseAdded.add(60.00);
-        expenseAdded.add(75.10);
+        LocalDate date1 = LocalDate.of(2024, 10, 10);
+        testCategory.addExpense(60.00, date1);
+        LocalDate date2 = LocalDate.of(2024, 9, 10);
+        testCategory.addExpense(75.10,date2);
+
+        testExpenseAdded.add(60.00);
+        testExpenseAdded.add(75.10);
         assertEquals(164.90, testCategory.getRemainingLimit());
     }
 
