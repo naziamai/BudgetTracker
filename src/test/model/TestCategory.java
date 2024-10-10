@@ -29,7 +29,8 @@ public class TestCategory {
     void testAddSingleExpense() {
         testCategory.addExpense(50.00);
         List<Double> expenseAdded = new ArrayList<>();
-        assertEquals(expenseAdded.add(50.00), testCategory.getListOfExpense());
+        expenseAdded.add(50.00);
+        assertEquals(expenseAdded, testCategory.getListOfExpense());
     }
 
     @Test 
@@ -37,6 +38,8 @@ public class TestCategory {
         testCategory.addExpense(60.00);
         testCategory.addExpense(75.10);
         List<Double> expenseAdded = new ArrayList<>();
+        expenseAdded.add(60.00);
+        expenseAdded.add(75.10);
         assertEquals(expenseAdded, testCategory.getListOfExpense());
     }
 }
