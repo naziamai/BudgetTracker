@@ -73,12 +73,12 @@ public class TestBudgetTracker {
 
     @Test 
     void testCalculateBudget() {
-        testBudgetTracker.calculateBudget();
         testBudgetTracker.addCategory(testc1);
         testBudgetTracker.addCategory(testc2);
         testListOfCategories.add(testc1);
         testListOfCategories.add(testc2);
+        testBudgetTracker.calculateBudget();
 
-        assertEquals(500.00,testBudgetTracker.getTotalBudget());
+        assertEquals(1500.00,testBudgetTracker.getTotalBudget());
     }
 }
