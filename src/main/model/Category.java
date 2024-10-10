@@ -1,42 +1,51 @@
 package model;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
     String name;
-    Double limit;
+    double limit;
     List<Double> listOfExpense;
 
-    public Category(String name, Double limit) {
-       //stub
+    public Category(String name, double limit) {
+       this.name = name;
+       this.limit = limit;
+       this.listOfExpense = new ArrayList<>(); 
     }
 
     //REQUIRES: limit > 0.00
     //MODIFIES: this 
     //EFFECTS: sets limit for the category 
-    public void setLimit(Double limit) {
-        
+    public void setLimit(double limit) {
+        this.limit = limit;
     }
     //REQUIRES: expense > 0.00
     //MODIFIES: this 
     //EFFECTS: Adds a single expense to the list of expenses 
-    public void addExpense(Double expense) {
-
+    public void addExpense(double expense) {
+        listOfExpense.add(expense);
     }
     // EFFECTS: Returns the remaining limit on the category
-    public Double getRemainingLimit() {
-        return 0.00;
+    public double getRemainingLimit() {
+        double remainingLimit;
+        double total = 0.00;
+        for(Double e: listOfExpense) {
+            total =+ e;
+        }
+        remainingLimit = this.limit - total;
+        return remainingLimit;
     }
     //EFFECTS: returns list of expenses
     public List<Double> getListOfExpense() {
-        return null;
+        return this.listOfExpense;
     }
 
     //EFFECTS: Returns the name of the category 
     public String getName(){
-        return name;
+        return this.name;
     }
     //EFFECTS: Returns the limit of the category 
-    public Double getLimit() {
-        return 0.00;
+    public double getLimit() {
+        return this.limit;
     }
 }
