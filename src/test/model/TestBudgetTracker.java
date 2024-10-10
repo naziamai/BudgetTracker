@@ -70,4 +70,15 @@ public class TestBudgetTracker {
 
         assertEquals(testListOfCategories, testBudgetTracker.getListOfCategory());
     }
+
+    @Test 
+    void testCalculateBudget() {
+        testBudgetTracker.calculateBudget();
+        testBudgetTracker.addCategory(testc1);
+        testBudgetTracker.addCategory(testc2);
+        testListOfCategories.add(testc1);
+        testListOfCategories.add(testc2);
+
+        assertEquals(testBudgetTracker.calculateBudget(),1500.00);
+    }
 }
