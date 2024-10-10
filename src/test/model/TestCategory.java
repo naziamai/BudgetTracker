@@ -42,4 +42,13 @@ public class TestCategory {
         expenseAdded.add(75.10);
         assertEquals(expenseAdded, testCategory.getListOfExpense());
     }
+    @Test 
+    void testGetRemainingLimit() {
+        testCategory.addExpense(60.00);
+        testCategory.addExpense(75.10);
+        List<Double> expenseAdded = new ArrayList<>();
+        expenseAdded.add(60.00);
+        expenseAdded.add(75.10);
+        assertEquals(165.00, testCategory.getRemainingLimit());
+    }
 }
