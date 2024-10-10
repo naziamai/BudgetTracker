@@ -1,4 +1,5 @@
 package model;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BudgetTracker {
@@ -6,32 +7,37 @@ public class BudgetTracker {
     double totalBudget;
 
     public BudgetTracker(){
-        //stub
+        this.listOfCategory = new ArrayList<>();
+        this.totalBudget = 0.00;
     }
     //MODIFIES: this
     //EFFECT: Adds a new category to the list of categories
     public void addCategory(Category category){
-
+        listOfCategory.add(category);
     }
     //REQUIRES: listOfCategory should not be empty 
     //MODIFIES: this
     //EFFECT: Removes a category from the list of categories
     public void removeCategory(Category category){
-
+        listOfCategory.remove(category);
     }
     //MODIFIES: this
     //EFFECTS: Calculates the total budget added across all categories 
-    public double calculateBudget(){
-        return 0.00;
+    public void calculateBudget(){
+        double total = 0.00;
+        for(Category c: listOfCategory) {
+            total += c.getLimit();
+        }
+        this.totalBudget = total;
     }
     // EFFECTS: Returns the total budget 
     public double getTotalBudget(){
-        return 0.00;
+        return this.totalBudget;
     }
 
     //EFFECTS: Returns list of categories
     public List<Category> getListOfCategory() {
-        return null;
+        return this.listOfCategory;
     }
 
 
