@@ -1,4 +1,5 @@
 package model;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,6 +7,7 @@ public class Category {
     private String name;
     private double limit;
     private List<Double> listOfExpense;
+    private List<LocalDate> dates;
 
     public Category(String name, double limit) {
        this.name = name;
@@ -21,7 +23,7 @@ public class Category {
     }
     //REQUIRES: expense > 0.00
     //MODIFIES: this 
-    //EFFECTS: Adds a single expense to the list of expenses 
+    //EFFECTS: Adds a single expense to the list of expenses and adds the date to list of dates
     public void addExpense(double expense) {
         listOfExpense.add(expense);
     }
