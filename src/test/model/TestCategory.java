@@ -49,6 +49,6 @@ public class TestCategory {
         List<Double> expenseAdded = new ArrayList<>();
         expenseAdded.add(60.00);
         expenseAdded.add(75.10);
-        assertEquals(165.00, testCategory.getRemainingLimit());
+        assertEquals(164.90, testCategory.getRemainingLimit());
     }
 }
