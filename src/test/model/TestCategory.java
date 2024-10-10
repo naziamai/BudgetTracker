@@ -17,8 +17,8 @@ public class TestCategory {
     @BeforeEach
     void runBefore() {
         testCategory = new Category("Grocery", 300.00);
-        List<Double> testExpenseAdded = new ArrayList<>();
-        List<LocalDate> testDates = new ArrayList<>();
+        testExpenseAdded = new ArrayList<>();
+        testDates = new ArrayList<>();
 
     }
 
@@ -38,7 +38,7 @@ public class TestCategory {
         assertEquals(testExpenseAdded, testCategory.getListOfExpense());
 
         testDates.add(date1);
-        assertEquals(testExpenseAdded, testCategory.getDates());
+        assertEquals(testDates, testCategory.getDates());
     }
 
     @Test 
@@ -47,7 +47,7 @@ public class TestCategory {
         testCategory.addExpense(60.00, date1);
         
         LocalDate date2 = LocalDate.of(2024, 9, 10);
-        testCategory.addExpense(75.00, date2);
+        testCategory.addExpense(75.10, date2);
 
         
         testExpenseAdded.add(60.00);
