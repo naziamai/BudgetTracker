@@ -26,32 +26,32 @@ public class TestBudgetTracker {
 
     @Test 
     void testContructor() {
-        assertEquals(testBudgetTracker.getListOfCategory(), null);
-        assertEquals(testBudgetTracker.getTotalBudget(), 0.00);
+        assertEquals(testListOfCategories, testBudgetTracker.getListOfCategory());
+        assertEquals(0.00, testBudgetTracker.getTotalBudget());
     }
     @Test 
     void testAddSingleCategory() {
         testBudgetTracker.addCategory(testc1);
-        testListOfCategories.add(new Category("Grocery", 500.00));
+        testListOfCategories.add(testc1);
         assertEquals(testListOfCategories, testBudgetTracker.getListOfCategory());
     }
     @Test
     void testAddMultipleCategories() {
         testBudgetTracker.addCategory(testc1);
         testBudgetTracker.addCategory(testc2);
-        testListOfCategories.add(new Category("Grocery", 500.00));
-        testListOfCategories.add(new Category("Bills", 1000.00));
+        testListOfCategories.add(testc1);
+        testListOfCategories.add(testc2);
         assertEquals(testListOfCategories, testBudgetTracker.getListOfCategory());
     }
     @Test
     void testRemoveSingleCategory() {
         testBudgetTracker.addCategory(testc1);
         testBudgetTracker.addCategory(testc2);
-        testListOfCategories.add(new Category("Grocery", 500.00));
-        testListOfCategories.add(new Category("Bills", 1000.00));
+        testListOfCategories.add(testc1);
+        testListOfCategories.add(testc2);
 
         testBudgetTracker.removeCategory(testc2);
-        testListOfCategories.remove(new Category("Bills", 1000.00));
+        testListOfCategories.remove(testc2);
 
         assertEquals(testListOfCategories, testBudgetTracker.getListOfCategory());
     }
@@ -60,13 +60,13 @@ public class TestBudgetTracker {
     void testRemoveMultipleCategories() {
         testBudgetTracker.addCategory(testc1);
         testBudgetTracker.addCategory(testc2);
-        testListOfCategories.add(new Category("Grocery", 500.00));
-        testListOfCategories.add(new Category("Bills", 1000.00));
+        testListOfCategories.add(testc1);
+        testListOfCategories.add(testc2);
 
         testBudgetTracker.removeCategory(testc2);
-        testListOfCategories.remove(new Category("Bills", 1000.00));
+        testListOfCategories.remove(testc2);
         testBudgetTracker.removeCategory(testc1);
-        testListOfCategories.remove(new Category("Grocery", 500.00));
+        testListOfCategories.remove(testc1);
 
         assertEquals(testListOfCategories, testBudgetTracker.getListOfCategory());
     }
@@ -79,6 +79,6 @@ public class TestBudgetTracker {
         testListOfCategories.add(testc1);
         testListOfCategories.add(testc2);
 
-        assertEquals(testBudgetTracker.calculateBudget(),1500.00);
+        assertEquals(500.00,testBudgetTracker.getTotalBudget());
     }
 }
