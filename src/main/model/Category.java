@@ -25,12 +25,13 @@ public class Category {
     public void addExpense(double expense) {
         listOfExpense.add(expense);
     }
+
     // EFFECTS: Returns the remaining limit on the category
     public double getRemainingLimit() {
         double remainingLimit;
         double total = 0.00;
         for(Double e: listOfExpense) {
-            total =+ e;
+            total += e;
         }
         remainingLimit = this.limit - total;
         return remainingLimit;
