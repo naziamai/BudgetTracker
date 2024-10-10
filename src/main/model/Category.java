@@ -13,6 +13,7 @@ public class Category {
        this.name = name;
        this.limit = limit;
        this.listOfExpense = new ArrayList<>(); 
+       this.dates = new ArrayList<>();
     }
 
     //REQUIRES: limit > 0.00
@@ -26,6 +27,7 @@ public class Category {
     //EFFECTS: Adds a single expense to the list of expenses and adds the date to list of dates
     public void addExpense(double expense, LocalDate date) {
         listOfExpense.add(expense);
+        dates.add(date);
     }
 
     // EFFECTS: Returns the remaining limit on the category
@@ -45,7 +47,7 @@ public class Category {
 
     //EFFECTS: returns list of dates
     public List<LocalDate> getDates() {
-        return null;
+        return dates;
     }
     //EFFECTS: Returns the name of the category 
     public String getName(){
