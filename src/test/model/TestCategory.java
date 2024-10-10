@@ -51,4 +51,10 @@ public class TestCategory {
         expenseAdded.add(75.10);
         assertEquals(164.90, testCategory.getRemainingLimit());
     }
+
+    @Test 
+    void testSetLimit() {
+        testCategory.setLimit(500.00);
+        assertEquals(testCategory.getLimit(), 500.00);
+    }
 }
