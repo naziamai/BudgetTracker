@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
-    String name;
-    double limit;
-    List<Double> listOfExpense;
+    private String name;
+    private double limit;
+    private List<Double> listOfExpense;
 
     public Category(String name, double limit) {
        this.name = name;

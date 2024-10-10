@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BudgetTracker {
-    List<Category> listOfCategory;
-    double totalBudget;
+   private List<Category> listOfCategory;
+   private double totalBudget;
 
     public BudgetTracker(){
         this.listOfCategory = new ArrayList<>();
