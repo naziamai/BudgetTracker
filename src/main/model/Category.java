@@ -24,7 +24,7 @@ public class Category {
     //REQUIRES: expense > 0.00
     //MODIFIES: this 
     //EFFECTS: Adds a single expense to the list of expenses and adds the date to list of dates
-    public void addExpense(double expense) {
+    public void addExpense(double expense, LocalDate date) {
         listOfExpense.add(expense);
     }
 
@@ -44,7 +44,7 @@ public class Category {
     }
 
     //EFFECTS: returns list of dates
-    public List<Double> getDates() {
+    public List<LocalDate> getDates() {
         return null;
     }
     //EFFECTS: Returns the name of the category 
