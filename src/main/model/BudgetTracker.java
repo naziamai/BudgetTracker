@@ -3,7 +3,7 @@ import java.util.List;
 
 public class BudgetTracker {
     List<Category> listOfCategory;
-    int totalBudget;
+    double totalBudget;
 
     public BudgetTracker(){
         //stub
@@ -13,8 +13,9 @@ public class BudgetTracker {
     public void addCategory(Category category){
 
     }
+    //REQUIRES: listOfCategory should not be empty 
     //MODIFIES: this
-    //EFFECT: Adds a new category to the list of categories
+    //EFFECT: Removes a category from the list of categories
     public void removeCategory(Category category){
 
     }
@@ -27,5 +28,11 @@ public class BudgetTracker {
     public int getTotalBudget(){
         return 0;
     }
+
+    //EFFECTS: Returns list of categories
+    public List<Category> getListOfCategory() {
+        return null;
+    }
+
 
 }
