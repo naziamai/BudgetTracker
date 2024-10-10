@@ -21,12 +21,12 @@ public class BudgetTracker {
     }
     //MODIFIES: this
     //EFFECTS: Calculates the total budget added across all categories 
-    public void calculateBudget(){
-        
+    public double calculateBudget(){
+        return 0.00;
     }
     // EFFECTS: Returns the total budget 
-    public int getTotalBudget(){
-        return 0;
+    public double getTotalBudget(){
+        return 0.00;
     }
 
     //EFFECTS: Returns list of categories
