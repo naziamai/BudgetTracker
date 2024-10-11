@@ -1,4 +1,5 @@
 package model;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +11,10 @@ public class Category {
     private List<LocalDate> dates;
 
     public Category(String name, double limit) {
-       this.name = name;
-       this.limit = limit;
-       this.listOfExpense = new ArrayList<>(); 
-       this.dates = new ArrayList<>();
+        this.name = name;
+        this.limit = limit;
+        this.listOfExpense = new ArrayList<>(); 
+        this.dates = new ArrayList<>();
     }
 
     //REQUIRES: limit > 0.00
@@ -25,6 +26,7 @@ public class Category {
     //REQUIRES: expense > 0.00
     //MODIFIES: this 
     //EFFECTS: Adds a single expense to the list of expenses and adds the date to list of dates
+
     public void addExpense(double expense, LocalDate date) {
         listOfExpense.add(expense);
         dates.add(date);
@@ -32,7 +34,8 @@ public class Category {
     //REQUIRES: expense > 0.00
     //MODIFIES: this 
     //EFFECTS: Adds a single expense to the list of expenses and adds the date to list of dates
-    public void removeExpense(double expense, LocalDate date){
+
+    public void removeExpense(double expense, LocalDate date) {
         listOfExpense.remove(expense);
         dates.remove(date);
     }
@@ -41,13 +44,14 @@ public class Category {
     public double getRemainingLimit() {
         double remainingLimit;
         double total = 0.00;
-        for(Double e: listOfExpense) {
+        for (Double e: listOfExpense) {
             total += e;
         }
         remainingLimit = this.limit - total;
         return remainingLimit;
     }
     //EFFECTS: returns list of expenses
+
     public List<Double> getListOfExpense() {
         return this.listOfExpense;
     }
@@ -57,10 +61,12 @@ public class Category {
         return dates;
     }
     //EFFECTS: Returns the name of the category 
-    public String getName(){
+
+    public String getName() {
         return this.name;
     }
     //EFFECTS: Returns the limit of the category 
+
     public double getLimit() {
         return this.limit;
     }
