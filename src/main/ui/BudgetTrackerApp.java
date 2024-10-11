@@ -11,6 +11,7 @@ import java.time.LocalDate;
 public class BudgetTrackerApp {
     private BudgetTracker budgetTracker;
     private Scanner scanner;
+   
 
     
     //EFFECTS: runs the budget tracker app
@@ -85,6 +86,7 @@ public class BudgetTrackerApp {
     private void addCategory() {
         System.out.println("Enter name of category: ");
         String name = scanner.next();
+        name = name.toLowerCase();
 
         System.out.println("Enter limit for category: ");
         double limit = scanner.nextDouble();
@@ -100,7 +102,7 @@ public class BudgetTrackerApp {
     
     private void addExpense() {
         System.out.println("Select a category from below: ");
-        viewCategories();
+        System.out.println(budgetTracker.getListOfCategory());
         
         System.out.print("Enter the category name: ");
         String name = scanner.next(); 
@@ -117,7 +119,7 @@ public class BudgetTrackerApp {
 
         category.addExpense(expense, date);
        
-        System.out.println("Expense successfully added to" + category);
+        System.out.println("Expense successfully added");
 
     }
     //MODIFIES: this 
@@ -166,14 +168,14 @@ public class BudgetTrackerApp {
 
     private void generateReport() {
         System.out.println("Enter a start date (YYYY-MM-DD): ");
-        String startInput = scanner.nextLine();
+        String startInput = scanner.next();
         LocalDate startDate = LocalDate.parse(startInput);
         System.out.println("Enter a end date (YYYY-MM-DD): ");
-        String endInput = scanner.nextLine();
+        String endInput = scanner.next();
         LocalDate endDate = LocalDate.parse(endInput);
         
         Report report = new Report(budgetTracker.getListOfCategory(), startDate, endDate);
-        report.generateSummary(startDate, endDate);
+        System.out.println(report.generateSummary(startDate, endDate));
 
 
     }
@@ -194,8 +196,10 @@ public class BudgetTrackerApp {
         
     //EFFECTS: displays the total budget addded across all categories
 
-    private double viewBudget() {
-        return budgetTracker.getTotalBudget();
+    private void viewBudget() {
+        budgetTracker.calculateBudget();
+        double total = budgetTracker.getTotalBudget();
+        System.out.println(total);
         
     }
     //EFFECTS: finds the category from list of category
