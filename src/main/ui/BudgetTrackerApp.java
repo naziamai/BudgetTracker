@@ -237,7 +237,12 @@ public class BudgetTrackerApp {
         String name = scanner.next();
         
         Category category = findCategory(name);
-        System.out.println(category.getListOfExpense());
+        if (category.getListOfExpense() != null && !category.getListOfExpense().isEmpty()) {
+            System.out.println("--- Expenses ---");
+            System.out.println(category.getListOfExpense());
+        } else {
+            System.out.println("No expenses added.");
+        }
     }
 
     //EFFECTS: finds the category from list of category
