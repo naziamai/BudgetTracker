@@ -60,6 +60,8 @@ public class BudgetTrackerApp {
             removeCategory();
         } else if (command.equals("l")) {
             removeExpense();
+        } else if (command.equals("m")) {
+            viewExpense();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -72,6 +74,7 @@ public class BudgetTrackerApp {
     private  void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\tv -> view categories");
+        System.out.println("\tm -> view expenses");
         System.out.println("\ta -> add category");
         System.out.println("\te -> add expense");
         System.out.println("\tr -> report");
@@ -223,6 +226,20 @@ public class BudgetTrackerApp {
         System.out.println(total);
         
     }
+
+    //EFFECTS: Allows user to view expenses in a category and returns total expense 
+
+    private void viewExpense() {
+        System.out.println("Select a category from below: ");
+        viewCategories();
+
+        System.out.println("Enter Category to view expenses in: ");
+        String name = scanner.next();
+        
+        Category category = findCategory(name);
+        System.out.println(category.getListOfExpense()) ;
+    }
+
     //EFFECTS: finds the category from list of category
 
     private Category findCategory(String name) {
