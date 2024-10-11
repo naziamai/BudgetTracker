@@ -13,12 +13,16 @@ public class TestCategory {
     Category testCategory;
     List<Double> testExpenseAdded;
     List<LocalDate> testDates;
+    LocalDate date1;
+    LocalDate date2;
     
     @BeforeEach
     void runBefore() {
         testCategory = new Category("Grocery", 300.00);
         testExpenseAdded = new ArrayList<>();
         testDates = new ArrayList<>();
+        date1 = LocalDate.of(2024, 10, 10);
+        date2 = LocalDate.of(2024, 9, 10);
 
     }
 
@@ -31,7 +35,7 @@ public class TestCategory {
 
     @Test
     void testAddSingleExpense() {
-        LocalDate date1 = LocalDate.of(2024, 10, 10);
+        
         testCategory.addExpense(50.00, date1);
        
         testExpenseAdded.add(50.00);
@@ -43,10 +47,8 @@ public class TestCategory {
 
     @Test 
     void testAddMultipleExpense() {
-        LocalDate date1 = LocalDate.of(2024, 10, 10);
+       
         testCategory.addExpense(60.00, date1);
-        
-        LocalDate date2 = LocalDate.of(2024, 9, 10);
         testCategory.addExpense(75.10, date2);
 
         
@@ -59,9 +61,7 @@ public class TestCategory {
     }
     @Test 
     void testGetRemainingLimit() {
-        LocalDate date1 = LocalDate.of(2024, 10, 10);
         testCategory.addExpense(60.00, date1);
-        LocalDate date2 = LocalDate.of(2024, 9, 10);
         testCategory.addExpense(75.10,date2);
 
         testExpenseAdded.add(60.00);
@@ -73,5 +73,11 @@ public class TestCategory {
     void testSetLimit() {
         testCategory.setLimit(500.00);
         assertEquals(testCategory.getLimit(), 500.00);
+    }
+    @Test 
+    void testGetExpenseByDate(){
+        testCategory.addExpense(60.00, date1);
+        testCategory.addExpense(75.00, date2);
+        assertEquals(60.00, testCategory.getExpenseByDate(date1));
     }
 }
