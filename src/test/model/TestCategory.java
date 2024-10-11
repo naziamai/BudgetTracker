@@ -45,6 +45,18 @@ public class TestCategory {
         assertEquals(testDates, testCategory.getDates());
     }
 
+    @Test
+    void testRemoveExpense() {
+        testCategory.addExpense(50.00, date1);
+        testCategory.addExpense(60.00, date1);
+        testCategory.removeExpense(50.00, date1);
+
+        testExpenseAdded.add(60.00);
+        testDates.add(date1);
+        assertEquals(testExpenseAdded, testCategory.getListOfExpense());
+        assertEquals(testDates, testCategory.getDates());
+    }
+
     @Test 
     void testAddMultipleExpense() {
        
