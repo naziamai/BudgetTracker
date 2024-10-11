@@ -16,9 +16,10 @@ public class Report {
 
     //REQUIRES: Valid start and end date entered 
     //EFFECTS: If a date in list of date is between the start and end date then that expense will generated in summary
-    //         in the form Category: Expense
+    //         in the form Category: Expense, as a list 
       
-    public void generateSummary(LocalDate startDate, LocalDate endDate){
+    public List<String> generateSummary(LocalDate startDate, LocalDate endDate){
+        return null;
 
     }
 }
