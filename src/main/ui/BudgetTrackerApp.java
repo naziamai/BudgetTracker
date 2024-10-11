@@ -76,6 +76,8 @@ public class BudgetTrackerApp {
         System.out.println("\te -> add expense");
         System.out.println("\tr -> report");
         System.out.println("\tb -> view budget");
+        System.out.println("\tx -> remove category");
+        System.out.println("\tl -> remove expense");
         System.out.println("\tq -> quit");
 
     }
@@ -141,6 +143,10 @@ public class BudgetTrackerApp {
         String name = scanner.next(); 
 
         Category category = findCategory(name);
+        if (category == null) {
+            System.out.println("Category not found. Please enter a valid category.");
+            return;
+        }
 
         System.out.println("Enter the expense: ");
         double expense = scanner.nextDouble();
@@ -166,6 +172,10 @@ public class BudgetTrackerApp {
         double limit = scanner.nextDouble();
     
         Category category = new Category(name,limit);
+        if (category.getListOfExpense() == null) {
+            System.out.println("Category not found. Please enter a valid category.");
+            return;
+        }
         budgetTracker.removeCategory(category);
         
 
