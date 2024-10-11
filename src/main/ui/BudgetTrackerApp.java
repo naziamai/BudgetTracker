@@ -168,15 +168,14 @@ public class BudgetTrackerApp {
     private void removeCategory() {
         System.out.println("Enter name of category: ");
         String name = scanner.next();
-        System.out.println("Enter limit for category: ");
-        double limit = scanner.nextDouble();
-    
-        Category category = new Category(name,limit);
-        if (category.getListOfExpense() == null) {
+
+        if (budgetTracker.getListOfCategory().isEmpty()) {
             System.out.println("Category not found. Please enter a valid category.");
             return;
         }
+        Category category = findCategory(name);
         budgetTracker.removeCategory(category);
+        System.out.println("Category successfully removed");
         
 
     }
