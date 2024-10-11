@@ -98,44 +98,35 @@ public class BudgetTrackerApp {
 
     }
     //MODIFIES: this
-    //EFFECTS: Allows user to add an expense
+    //EFFECTS: Allows user to add an expense, send an alert if the new expense is exceeding remaining limit
     
     private void addExpense() {
-
-        System.out.println("Select a category from below: ");
-    
+        System.out.println("Select a category from below: ");   
         List<Category> categories = budgetTracker.getListOfCategory();
-            if (categories.isEmpty()) {
-                 System.out.println("No categories available. Please add categories first.");
-                    return; 
-                }
-
-                else {
-             for (Category c : categories) {
-                 System.out.println(c.getName()); 
-             }
-    }
-
+        
+        for (Category c : categories) {
+            System.out.println(c.getName()); 
+        }
+        
         System.out.print("Enter the category name: ");
         String name = scanner.next(); 
 
         Category category = findCategory(name);
         if (category == null) {
-        System.out.println("Category not found. Please enter a valid category.");
-        return;
+            System.out.println("Category not found. Please enter a valid category.");
+            return;
         }
-    
-
         System.out.println("Enter the expense: ");
         double expense = scanner.nextDouble();
         scanner.nextLine();
-
+        if (expense >= category.getRemainingLimit()) {
+            alert(); 
+        }
         System.out.println("Enter date (YYYY-MM-DD): ");
         String dateInput = scanner.next();
         LocalDate date = LocalDate.parse(dateInput);
 
         category.addExpense(expense, date);
-       
         System.out.println("Expense successfully added");
 
     }
@@ -228,6 +219,21 @@ public class BudgetTrackerApp {
             }
         }
         return null;
+    }
+    //EFFECTS: Provides alert messsage if expense exceeds remainiing limmit
+    
+    private void alert() {
+        System.out.println("Alert: this expense exceeds remaining limit");
+        System.out.println("Do you still want to proceed with expense? Yes or No? :");
+        String answer = scanner.next();
+
+        if (answer.equals("Yes")) {
+            System.out.println("Procced to add details");
+        } else {
+            displayMenu();
+        }
+
+        
     }
 }
 
