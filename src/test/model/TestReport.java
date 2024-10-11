@@ -57,6 +57,16 @@ public class TestReport {
         testSummary.add(s3);
 
         assertEquals(testSummary, testReport.generateSummary(startDate, endDate));
+        assertEquals(3, testReport.generateSummary(startDate, endDate).size());
+    }
+
+    @Test
+    void testGenerateSummaryNoExpensesInRange() {
+        LocalDate newStartDate = LocalDate.of(2023, 9, 1);
+        LocalDate newEndDate = LocalDate.of(2023, 9, 30);
+        List<String> summary = testReport.generateSummary(newStartDate, newEndDate);
+
+        assertTrue(summary.isEmpty());
     }
 
 
