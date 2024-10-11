@@ -16,7 +16,7 @@ public class TestReport {
     LocalDate endDate;
 
     @BeforeEach
-    void runBefore(){
+    void runBefore() {
         testCategories = new ArrayList<>();
         Category c1 = new Category("Grocery", 600);
         Category c2 = new Category("Bills", 1000);
@@ -31,10 +31,14 @@ public class TestReport {
         c1.addExpense(50, midDate);
         c2.addExpense(300, startDate);
         c3.addExpense(20, midDate);
+
+        testCategories.add(c1);
+        testCategories.add(c2);
+        testCategories.add(c3);
     }
 
     @Test
-    void testGenerateSummary(){
+    void testGenerateSummary() {
         List<String> testSummary = new ArrayList<>();
         List<LocalDate> testDates = new ArrayList<>();
 
@@ -43,14 +47,14 @@ public class TestReport {
         testDates.add(startDate);
         testDates.add(midDate);
 
-        String c1 = "Grocery" + ":" + "50";
-        String c2 = "Bills" + ":" + "300";
-        String c3 = "Entertainment" + "20";
+        String s1 = "Grocery" + ": " + "50.0"; 
+        String s2 = "Bills" + ": " + "300.0";
+        String s3 = "Entertainment" + ": " + "20.0";
    
 
-        testSummary.add(c1);
-        testSummary.add(c2);
-        testSummary.add(c3);
+        testSummary.add(s1);
+        testSummary.add(s2);
+        testSummary.add(s3);
 
         assertEquals(testSummary, testReport.generateSummary(startDate, endDate));
     }

@@ -8,7 +8,7 @@ public class Report {
     private List<Category> listOfCategory;
     
 
-    public Report(List<Category> listOfCategories, LocalDate startDate, LocalDate endDate){
+    public Report(List<Category> listOfCategories, LocalDate startDate, LocalDate endDate) {
         this.listOfCategory = listOfCategories;
          
     }
@@ -18,7 +18,7 @@ public class Report {
     //EFFECTS: If a date in list of date is between the start and end date then that expense will generated in summary
     //         in the form Category: Expense, as a list 
       
-    public List<String> generateSummary(LocalDate startDate, LocalDate endDate){
+    public List<String> generateSummary(LocalDate startDate, LocalDate endDate) {
         List<String> summary = new ArrayList<>();
 
         for (Category c : listOfCategory) {
@@ -26,8 +26,9 @@ public class Report {
             for (int i = 0; i < dates.size(); i++) {
                 LocalDate date = dates.get(i);
                 
-                if ((date.isAfter(startDate) || date.equals(startDate)) && 
-                    (date.isBefore(endDate) || date.equals(endDate))) {
+                if ((date.isAfter(startDate) || date.equals(startDate)) 
+                        && 
+                        (date.isBefore(endDate) || date.equals(endDate))) {
                     double expense = c.getExpenseByDate(date); 
                     String entry = c.getName() + ": " + expense;
                     summary.add(entry);

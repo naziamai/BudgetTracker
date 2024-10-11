@@ -16,7 +16,7 @@ public class TestBudgetTracker {
     Category testc2;
 
     @BeforeEach
-    void runBefore(){
+    void runBefore() {
         testBudgetTracker = new BudgetTracker();
         testListOfCategories = new ArrayList<>();
         testc1 = new Category("Grocery", 500.00);
@@ -29,12 +29,14 @@ public class TestBudgetTracker {
         assertEquals(testListOfCategories, testBudgetTracker.getListOfCategory());
         assertEquals(0.00, testBudgetTracker.getTotalBudget());
     }
+
     @Test 
     void testAddSingleCategory() {
         testBudgetTracker.addCategory(testc1);
         testListOfCategories.add(testc1);
         assertEquals(testListOfCategories, testBudgetTracker.getListOfCategory());
     }
+
     @Test
     void testAddMultipleCategories() {
         testBudgetTracker.addCategory(testc1);
@@ -43,6 +45,7 @@ public class TestBudgetTracker {
         testListOfCategories.add(testc2);
         assertEquals(testListOfCategories, testBudgetTracker.getListOfCategory());
     }
+
     @Test
     void testRemoveSingleCategory() {
         testBudgetTracker.addCategory(testc1);

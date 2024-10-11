@@ -15,6 +15,7 @@ public class BudgetTracker {
     public void addCategory(Category category){
         listOfCategory.add(category);
     }
+
     //REQUIRES: listOfCategory should not be empty 
     //MODIFIES: this
     //EFFECT: Removes a category from the list of categories

@@ -71,6 +71,7 @@ public class TestCategory {
         assertEquals(testExpenseAdded, testCategory.getListOfExpense());
         assertEquals(testDates, testCategory.getDates());
     }
+    
     @Test 
     void testGetRemainingLimit() {
         testCategory.addExpense(60.00, date1);
@@ -86,8 +87,9 @@ public class TestCategory {
         testCategory.setLimit(500.00);
         assertEquals(testCategory.getLimit(), 500.00);
     }
+    
     @Test 
-    void testGetExpenseByDate(){
+    void testGetExpenseByDate() {
         testCategory.addExpense(60.00, date1);
         testCategory.addExpense(75.00, date2);
         assertEquals(60.00, testCategory.getExpenseByDate(date1));
