@@ -227,7 +227,7 @@ public class BudgetTrackerApp {
         
     }
 
-    //EFFECTS: Allows user to view expenses in a category and returns total expense 
+    //EFFECTS: Allows user to view expenses in a category 
 
     private void viewExpense() {
         System.out.println("Select a category from below: ");
@@ -263,7 +263,7 @@ public class BudgetTrackerApp {
         System.out.println("Do you still want to proceed with expense? Yes or No? :");
         String answer = scanner.next();
 
-        if (answer.equals("Yes")) {
+        if (answer.equalsIgnoreCase("Yes")) {
             System.out.println("Procced to add details");
         } else {
             displayMenu();
