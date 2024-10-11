@@ -237,7 +237,7 @@ public class BudgetTrackerApp {
         String name = scanner.next();
         
         Category category = findCategory(name);
-        System.out.println(category.getListOfExpense()) ;
+        System.out.println(category.getListOfExpense());
     }
 
     //EFFECTS: finds the category from list of category
@@ -250,6 +250,7 @@ public class BudgetTrackerApp {
         }
         return null;
     }
+
     //EFFECTS: Provides alert messsage if expense exceeds remainiing limmit
     
     private void alert() {
