@@ -33,7 +33,8 @@ public class Category {
     //MODIFIES: this 
     //EFFECTS: Adds a single expense to the list of expenses and adds the date to list of dates
     public void removeExpense(double expense, LocalDate date){
-        
+        listOfExpense.remove(expense);
+        dates.remove(date);
     }
 
     // EFFECTS: Returns the remaining limit on the category
