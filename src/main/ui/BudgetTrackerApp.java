@@ -114,7 +114,7 @@ public class BudgetTrackerApp {
         String name = scanner.next(); 
 
         Category category = findCategory(name);
-        if (category == null) {
+        if (categories.isEmpty()) {
             System.out.println("Category not found. Please enter a valid category.");
             return;
         }
@@ -138,20 +138,24 @@ public class BudgetTrackerApp {
     private void removeExpense() {
         System.out.println("Select a category from below: ");
         viewCategories();
+
+        System.out.println("Enter the category name: ");
+        String name = scanner.next();
         
-        System.out.print("Enter the category name: ");
-        String name = scanner.next(); 
-
-        Category category = findCategory(name);
-        if (category == null) {
-            System.out.println("Category not found. Please enter a valid category.");
-            return;
-        }
-
-        System.out.println("Enter the expense: ");
-        double expense = scanner.nextDouble();
+        System.out.print("Enter the expense: ");
+        double expense = scanner.nextDouble(); 
         scanner.nextLine();
 
+        System.out.println("Enter expense date: ");
+
+
+        Category category = findCategory(name);
+        if (category.getListOfExpense().isEmpty()) {
+            System.out.println("Expense not found. Please enter a valid expense.");
+            return;
+        } else {
+            category.getListOfExpense().indexOf(expense); 
+        }
 
         System.out.println("Enter date (YYYY-MM-DD): ");
         String dateInput = scanner.next();
@@ -159,7 +163,7 @@ public class BudgetTrackerApp {
 
         category.removeExpense(expense, date);
        
-        System.out.println("Expense successfully removed from" + category);
+        System.out.println("Expense successfully removed from" + category.getName());
 
     }
     //MODIFIES: this
