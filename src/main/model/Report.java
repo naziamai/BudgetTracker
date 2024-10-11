@@ -1,15 +1,15 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Report {
     private List<Category> listOfCategory;
-    private List<LocalDate> listOfDates;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    
 
     public Report(List<Category> listOfCategories, LocalDate startDate, LocalDate endDate){
+        this.listOfCategory = listOfCategories;
          
     }
     
@@ -19,7 +19,24 @@ public class Report {
     //         in the form Category: Expense, as a list 
       
     public List<String> generateSummary(LocalDate startDate, LocalDate endDate){
-        return null;
+        List<String> summary = new ArrayList<>();
 
+        for (Category c : listOfCategory) {
+            List<LocalDate> dates = c.getDates(); 
+            for (int i = 0; i < dates.size(); i++) {
+                LocalDate date = dates.get(i);
+                
+                if ((date.isAfter(startDate) || date.equals(startDate)) && 
+                    (date.isBefore(endDate) || date.equals(endDate))) {
+                    double expense = c.getExpenseByDate(date); 
+                    String entry = c.getName() + ": " + expense;
+                    summary.add(entry);
+                }
+            }
+        }
+
+        return summary;
     }
+        
+         
 }
