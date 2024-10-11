@@ -101,13 +101,30 @@ public class BudgetTrackerApp {
     //EFFECTS: Allows user to add an expense
     
     private void addExpense() {
+
         System.out.println("Select a category from below: ");
-        System.out.println(budgetTracker.getListOfCategory());
-        
+    
+        List<Category> categories = budgetTracker.getListOfCategory();
+            if (categories.isEmpty()) {
+                 System.out.println("No categories available. Please add categories first.");
+                    return; 
+                }
+
+                else {
+             for (Category c : categories) {
+                 System.out.println(c.getName()); 
+             }
+    }
+
         System.out.print("Enter the category name: ");
         String name = scanner.next(); 
 
         Category category = findCategory(name);
+        if (category == null) {
+        System.out.println("Category not found. Please enter a valid category.");
+        return;
+        }
+    
 
         System.out.println("Enter the expense: ");
         double expense = scanner.nextDouble();
