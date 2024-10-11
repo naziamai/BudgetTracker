@@ -57,4 +57,9 @@ public class Category {
     public double getLimit() {
         return this.limit;
     }
+
+    //EFFECTS: returns the expense made on a particular date
+    public double getExpenseByDate(LocalDate date) {
+        return 0.00;
+    }
 }
