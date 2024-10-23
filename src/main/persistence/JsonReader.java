@@ -5,6 +5,8 @@ import org.json.*;
 
 import model.BudgetTracker;
 import model.Category;
+import java.time.LocalDate;
+import java.util.List;
 
 // Citation: Code modelled from JsonSterializationDemo
 
@@ -43,15 +45,14 @@ public class JsonReader {
         return null;
     }
 
-    //MODIFIES: category
-    //EFFECTS: parses expenses from jsonObject and adds them to a category
-    private void addExpenses(Category category, JSONObject jsonObject) {
-
+    //EFFECTS: parses expenses from a jsonArray and returns it 
+    private List<Double> parseExpense() {
+        return null;
     }
 
-    //EFFECTS: parses expense from jsonObject and returns it 
-    private double addExpense() {
-        return 0.00;
+    //EFFECTS: parses dates from a jsonArray and returns it 
+    private List<LocalDate> parseDates() {
+        return null;
     }
 
 
