@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+// Report class generates a budget report according to the input dates 
+
 public class Report {
     private List<Category> listOfCategory;
     

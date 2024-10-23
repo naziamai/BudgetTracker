@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+//Category class creats a category with a name, limit, list of expense and list of dates for added expense
+
 public class Category {
     private String name;
     private double limit;

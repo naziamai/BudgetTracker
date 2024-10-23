@@ -8,6 +8,8 @@ import model.Category;
 import model.Report;
 import java.time.LocalDate;
 
+// BudgetTrackerApp class handles user input
+
 public class BudgetTrackerApp {
     private BudgetTracker budgetTracker;
     private Scanner scanner;
