@@ -28,7 +28,7 @@ public class TestJsonReader extends TestJson{
 
     @Test 
     void testReaderEmptyBudgetTracker() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyBudgetTracker.json");
+        JsonReader reader = new JsonReader("./data/TestReaderEmptyBudgetTracker.json");
         try {
             BudgetTracker bt = reader.read();
             assertEquals (0, bt.getListOfCategory().size());
@@ -42,7 +42,7 @@ public class TestJsonReader extends TestJson{
 
     @Test 
     void testReaderGeneralBudgetTracker() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralBudgetTracker");
+        JsonReader reader = new JsonReader("./data/TestReaderGeneralBudgetTracker.json");
         try {
             BudgetTracker bt = reader.read();
             assertEquals (2, bt.getListOfCategory().size());
