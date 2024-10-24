@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 // Citation: Code modelled from JsonSterializationDemo
 
-//Represents a reader that reads workroom from JSON data stored in file 
+//Represents a reader that reads budgetTracker from JSON data stored in file 
 public class JsonReader {
     private String source;
     
