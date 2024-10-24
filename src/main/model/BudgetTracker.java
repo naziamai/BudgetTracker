@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-// BudgetTracker class makes changes to list of budgets and handles total budget 
+// BudgetTracker class makes changes to list of categories and handles total budget 
 
 public class BudgetTracker {
     private List<Category> listOfCategory;
