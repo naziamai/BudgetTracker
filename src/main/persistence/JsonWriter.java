@@ -30,6 +30,12 @@ public class JsonWriter {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: closes writer
+    public void close() {
+
+    }
+
     //MODIFIES: this 
     //EFFECTS: writes string to file 
     private void saveToFile(String json) {
