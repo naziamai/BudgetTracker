@@ -26,12 +26,12 @@ public class TestJsonWriter extends TestJson {
     void testWriterEmptyBudgetTracker() {
         try {
             BudgetTracker bt = new BudgetTracker();
-            JsonWriter writer = new JsonWriter("./data/TestWriterEmptyGeneralBudgetTracker.json");
+            JsonWriter writer = new JsonWriter("./data/TestWriterEmptyBudgetTracker.json");
             writer.open();
             writer.write(bt);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/TestWriterEmptyGeneralBudgetTracker.json");
+            JsonReader reader = new JsonReader("./data/TestWriterEmptyBudgetTracker.json");
             bt = reader.read();
             assertTrue(bt.getListOfCategory().isEmpty());
             assertEquals(0.00, bt.getTotalBudget());
