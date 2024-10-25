@@ -5,13 +5,21 @@ import java.util.*;
 import model.BudgetTracker;
 import model.Category;
 import model.Report;
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
 import java.time.LocalDate;
+import java.io.IOException;
+import java.io.FileNotFoundException;
 
 // BudgetTrackerApp class handles user input
 
 public class BudgetTrackerApp {
+    private static final String JSON_STORE = "./data/budgetTracker.json";
     private BudgetTracker budgetTracker;
     private Scanner scanner;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
    
 
     
@@ -19,6 +27,9 @@ public class BudgetTrackerApp {
     public BudgetTrackerApp() {
         this.scanner = new Scanner(System.in);
         this.budgetTracker = new BudgetTracker();
+        budgetTracker = new BudgetTracker();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         
     }
 
@@ -63,6 +74,15 @@ public class BudgetTrackerApp {
             removeExpense();
         } else if (command.equals("m")) {
             viewExpense();
+        } else if (command.equals("s")) {
+            try {
+                saveBudgetTracker();
+            } catch (IOException e) {
+                //pass
+            }
+
+        } else if (command.equals("f")) {
+            loadBudgetTracker();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -82,6 +102,8 @@ public class BudgetTrackerApp {
         System.out.println("\tb -> view budget");
         System.out.println("\tx -> remove category");
         System.out.println("\tl -> remove expense");
+        System.out.println("\ts -> save budget tracker");
+        System.out.println("\tf -> load budget tracker from file");
         System.out.println("\tq -> quit");
 
     }
@@ -272,13 +294,26 @@ public class BudgetTrackerApp {
     }
 
     //EFFECTS: saves the current state of budgetTracker to file 
-    private void saveBudgetTracker() {
-        
+    private void saveBudgetTracker() throws IOException {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(budgetTracker);
+            jsonWriter.close();
+            System.out.println("Saved " + "budget tracker" + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
     }
+        
 
     //EFFECTS: loads budgetTracker from file
     private void loadBudgetTracker() {
 
+        try {
+            budgetTracker = jsonReader.read();
+            System.out.println("Loaded " + "budget tracker" + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 }
-
