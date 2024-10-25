@@ -1,4 +1,17 @@
 {
     "totalBudget": 0,
-    "categories": []
+    "categories": [
+        {
+            "name": "grocery",
+            "limit": 100.5,
+            "listOfExpense": [],
+            "dates": []
+        },
+        {
+            "name": "bills",
+            "limit": 330,
+            "listOfExpense": [],
+            "dates": []
+        }
+    ]
 }
