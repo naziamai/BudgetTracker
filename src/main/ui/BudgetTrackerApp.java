@@ -75,12 +75,7 @@ public class BudgetTrackerApp {
         } else if (command.equals("m")) {
             viewExpense();
         } else if (command.equals("s")) {
-            try {
-                saveBudgetTracker();
-            } catch (IOException e) {
-                //pass
-            }
-
+            saveBudgetTracker();
         } else if (command.equals("f")) {
             loadBudgetTracker();
         } else {
@@ -294,7 +289,7 @@ public class BudgetTrackerApp {
     }
 
     //EFFECTS: saves the current state of budgetTracker to file 
-    private void saveBudgetTracker() throws IOException {
+    private void saveBudgetTracker() {
         try {
             jsonWriter.open();
             jsonWriter.write(budgetTracker);
