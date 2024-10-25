@@ -30,7 +30,7 @@ public class TestJsonWriter extends TestJson {
             writer.write(bt);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/TestReaderEmptyGeneralBudgetTracker.json");
+            JsonReader reader = new JsonReader("./data/TestWriterEmptyGeneralBudgetTracker.json");
             bt = reader.read();
             assertTrue(bt.getListOfCategory().isEmpty());
             assertEquals(0.00, bt.getTotalBudget());
@@ -40,7 +40,7 @@ public class TestJsonWriter extends TestJson {
             fail("Exception should not have been thrown");
 
         }
-    }
+    } 
 
     @Test
     void testWriterGeneralBudgetTracker() {
@@ -51,7 +51,7 @@ public class TestJsonWriter extends TestJson {
             writer.write(bt);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/TestReaderGeneralBudgetTracker.json");
+            JsonReader reader = new JsonReader("./data/TestWriterGeneralBudgetTracker.json");
             bt = reader.read();
             assertEquals(2, bt.getListOfCategory().size());
             checkCategory("grocery", 100.50, bt.getListOfCategory().get(0));

@@ -4,7 +4,7 @@
         "name" : "grocery",
         "limit" : 100.50,
         "listOfExpense" : [
-               50.00,
+               "uhhg",
                20.90
 
             ],
