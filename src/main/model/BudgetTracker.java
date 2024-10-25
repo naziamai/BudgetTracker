@@ -3,9 +3,14 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // BudgetTracker class makes changes to list of categories and handles total budget 
 
-public class BudgetTracker {
+public class BudgetTracker implements Writable {
     private List<Category> listOfCategory;
     private double totalBudget;
 
@@ -46,6 +51,25 @@ public class BudgetTracker {
     //EFFECTS: Returns list of categories
     public List<Category> getListOfCategory() {
         return this.listOfCategory;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("totalBudget", totalBudget);
+        json.put("categories", categoriesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray categoriesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Category c : listOfCategory) {
+            jsonArray.put(c.toJson());
+        }
+
+        return jsonArray;
     }
 
 

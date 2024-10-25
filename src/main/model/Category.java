@@ -4,9 +4,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 //Category class creats a category with a name, limit, list of expense and list of dates for added expense
 
-public class Category {
+public class Category implements Writable {
     private String name;
     private double limit;
     private List<Double> listOfExpense;
@@ -77,5 +81,15 @@ public class Category {
     public double getExpenseByDate(LocalDate date) {
         int index = dates.indexOf(date);
         return listOfExpense.get(index);
+    }
+
+     @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("limit", limit);
+        json.put("listOfExpense", listOfExpense);
+        json.put("dates", dates);
+        return json;
     }
 }
