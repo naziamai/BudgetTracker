@@ -83,7 +83,7 @@ public class Category implements Writable {
         return listOfExpense.get(index);
     }
 
-     @Override
+    @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);

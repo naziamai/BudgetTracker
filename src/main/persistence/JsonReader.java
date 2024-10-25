@@ -36,7 +36,7 @@ public class JsonReader {
 
     //EFFECTS: Reads source as a string and returns it 
     private String readFile(String source) throws IOException {
-         StringBuilder contentBuilder = new StringBuilder();
+        StringBuilder contentBuilder = new StringBuilder();
 
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
             stream.forEach(s -> contentBuilder.append(s));
@@ -83,13 +83,13 @@ public class JsonReader {
 
     //EFFECTS: parses expenses from a jsonArray and returns it 
     private List<Double> parseExpense(JSONArray jsonArray) {
-            List<Double> expenses = new ArrayList<>();
-            for (Object obj : jsonArray) {
-                if (obj instanceof Number) {
-                    expenses.add(((Number) obj).doubleValue());
+        List<Double> expenses = new ArrayList<>();
+        for (Object obj : jsonArray) {
+            if (obj instanceof Number) {
+                expenses.add(((Number) obj).doubleValue());
             }
         }
-            return expenses;
+        return expenses;
     }
 
     //EFFECTS: parses dates from a jsonArray and returns it 

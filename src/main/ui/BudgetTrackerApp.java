@@ -154,6 +154,7 @@ public class BudgetTrackerApp {
     }
     //MODIFIES: this 
     //EFFECTS: Allows user to remove an expense 
+    
     private void removeExpense() {
         System.out.println("Select a category from below: ");
         viewCategories();
@@ -182,7 +183,7 @@ public class BudgetTrackerApp {
 
         category.removeExpense(expense, date);
        
-        System.out.println("Expense successfully removed from" + category.getName());
+        System.out.println("Expense successfully removed from " + category.getName());
 
     }
     //MODIFIES: this
