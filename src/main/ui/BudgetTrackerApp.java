@@ -70,13 +70,13 @@ public class BudgetTrackerApp {
             viewBudget();
         } else if (command.equals("x")) {
             removeCategory();
-        } else if (command.equals("l")) {
+        } else if (command.equals("t")) {
             removeExpense();
         } else if (command.equals("m")) {
             viewExpense();
         } else if (command.equals("s")) {
             saveBudgetTracker();
-        } else if (command.equals("f")) {
+        } else if (command.equals("l")) {
             loadBudgetTracker();
         } else {
             System.out.println("Selection not valid...");
@@ -95,10 +95,10 @@ public class BudgetTrackerApp {
         System.out.println("\te -> add expense");
         System.out.println("\tr -> report");
         System.out.println("\tb -> view budget");
-        System.out.println("\tx -> remove category");
-        System.out.println("\tl -> remove expense");
+        System.out.println("\tt -> remove category");
+        System.out.println("\tx -> remove expense");
         System.out.println("\ts -> save budget tracker");
-        System.out.println("\tf -> load budget tracker from file");
+        System.out.println("\tl -> load budget tracker from file");
         System.out.println("\tq -> quit");
 
     }
@@ -154,7 +154,7 @@ public class BudgetTrackerApp {
     }
     //MODIFIES: this 
     //EFFECTS: Allows user to remove an expense 
-    
+
     private void removeExpense() {
         System.out.println("Select a category from below: ");
         viewCategories();
