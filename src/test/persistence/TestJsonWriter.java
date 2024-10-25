@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.*;
 import org.junit.jupiter.api.Test;
 import model.BudgetTracker;
+import model.Category;
 
 
 public class TestJsonWriter extends TestJson {
@@ -46,6 +47,8 @@ public class TestJsonWriter extends TestJson {
     void testWriterGeneralBudgetTracker() {
         try {
             BudgetTracker bt = new BudgetTracker();
+            bt.addCategory(new Category("grocery", 100.50));
+            bt.addCategory(new Category("bills", 330.00));
             JsonWriter writer = new JsonWriter("./data/TestWriterGeneralBudgetTracker.json");
             writer.open();
             writer.write(bt);
