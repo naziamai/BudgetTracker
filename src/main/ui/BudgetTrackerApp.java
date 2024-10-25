@@ -3,7 +3,6 @@ package ui;
 import java.util.*;
 
 import model.BudgetTracker;
-//import model.BudgetTracker;
 import model.Category;
 import model.Report;
 import java.time.LocalDate;
@@ -89,7 +88,6 @@ public class BudgetTrackerApp {
 
     //MODIFIES: this
     //EFFECTS: Allows user to add a category 
-
     private void addCategory() {
         System.out.println("Enter name of category: ");
         String name = scanner.next();
@@ -105,7 +103,7 @@ public class BudgetTrackerApp {
 
     }
     //MODIFIES: this
-    //EFFECTS: Allows user to add an expense, send an alert if the new expense is exceeding remaining limit
+    //EFFECTS: Allows user to add an expense, send an alert if the new expense is exceeding remaining limit.
     
     private void addExpense() {
         System.out.println("Select a category from below: ");   
@@ -138,8 +136,7 @@ public class BudgetTrackerApp {
 
     }
     //MODIFIES: this 
-    //EFFECTS: Allows user to remove an expense
-
+    //EFFECTS: Allows user to remove an expense 
     private void removeExpense() {
         System.out.println("Select a category from below: ");
         viewCategories();
@@ -172,7 +169,7 @@ public class BudgetTrackerApp {
 
     }
     //MODIFIES: this
-    //EFFECTS: Allows user to remove a category
+    //EFFECTS: Allows user to remove a category 
 
     private void removeCategory() {
         System.out.println("Enter name of category: ");
@@ -273,9 +270,15 @@ public class BudgetTrackerApp {
 
         
     }
+
+    //EFFECTS: saves the current state of budgetTracker to file 
+    private void saveBudgetTracker() {
+        
+    }
+
+    //EFFECTS: loads budgetTracker from file
+    private void loadBudgetTracker() {
+
+    }
 }
 
-    
-    
-
-    
