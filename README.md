@@ -27,3 +27,11 @@ This project is of particular interest to me since it can be a very helpful tool
 *Phase 2*
 - As a user I want to be able to save the entire state of my application to file (if and when I choose to). 
 - As a user I want to be able to load the entire state of my application (if and when I choose to), from file and resume where I left off. 
+
+*Phase 3*
+# Instructions for End User
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by selecting the category button and adding/removing a category from list of categories.
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by adding expenses to any selected category from list of categories 
+- You can locate my visual component after successfully adding a category or expense from the respective button options.
+- You can save the state of my application by clicking on the save button.
+- You can reload the state of my application by clicking on the load button.
