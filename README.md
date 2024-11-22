@@ -35,4 +35,4 @@ This project is of particular interest to me since it can be a very helpful tool
 - You can generate the second required action related to the user story "adding multiple Xs to a Y" by adding expenses to any selected category from list of categories 
 - You can locate my visual component after successfully adding a category or expense from the respective button options.
 - You can save the state of my application by clicking on the save button.
-- You can reload the state of my application by clicking on the load button.
+- You can reload the state of my application by clicking on the load button .
