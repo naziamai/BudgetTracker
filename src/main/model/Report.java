@@ -37,7 +37,7 @@ public class Report {
                 }
             }
         }
-
+        EventLog.getInstance().logEvent(new Event("Generated report from: " + startDate + " to " +  endDate));
         return summary;
     }
         

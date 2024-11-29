@@ -23,6 +23,7 @@ public class BudgetTracker implements Writable {
 
     public void addCategory(Category category) {
         listOfCategory.add(category);
+        EventLog.getInstance().logEvent(new Event("Added category : " + category.getName()));
     }
 
     //REQUIRES: listOfCategory should not be empty 
@@ -31,6 +32,7 @@ public class BudgetTracker implements Writable {
 
     public void removeCategory(Category category) {
         listOfCategory.remove(category);
+        EventLog.getInstance().logEvent(new Event("Removed category : " + category.getName()));
     }
     //MODIFIES: this
     //EFFECTS: Calculates the total budget added across all categories 
@@ -41,6 +43,7 @@ public class BudgetTracker implements Writable {
             total += c.getLimit();
         }
         this.totalBudget = total;
+        EventLog.getInstance().logEvent(new Event("Calculatted total budget: " + totalBudget));
     }
     // EFFECTS: Returns the total budget 
 

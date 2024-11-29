@@ -28,6 +28,7 @@ public class Category implements Writable {
     //EFFECTS: sets limit for the category 
     public void setLimit(double limit) {
         this.limit = limit;
+        EventLog.getInstance().logEvent(new Event("Set limit for " + name + " to " + limit + "dollars"));
     }
     //REQUIRES: expense > 0.00
     //MODIFIES: this 
@@ -36,6 +37,7 @@ public class Category implements Writable {
     public void addExpense(double expense, LocalDate date) {
         listOfExpense.add(expense);
         dates.add(date);
+        EventLog.getInstance().logEvent(new Event("Added expense for " + name + ": " + expense + " dollars"));
     }
     //REQUIRES: expense > 0.00
     //MODIFIES: this 
@@ -44,6 +46,7 @@ public class Category implements Writable {
     public void removeExpense(double expense, LocalDate date) {
         listOfExpense.remove(expense);
         dates.remove(date);
+        EventLog.getInstance().logEvent(new Event("Removed expense for " + name + ": " + expense + " dollars"));
     }
 
     // EFFECTS: Returns the remaining limit on the category
