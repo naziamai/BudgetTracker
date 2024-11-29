@@ -333,7 +333,7 @@ public class GUI {
         // Remove category from the map and budget tracker
         Category category = categoryMap.remove(categoryName);
         if (category != null) {
-            budgetTracker.getListOfCategory().remove(category);
+            budgetTracker.removeCategory(category);
             deleteCategoryDropdown.removeItem(categoryName);
             categoryDropdown.removeItem(categoryName); // Update the dropdown in Expense Page
             JOptionPane.showMessageDialog(null, "Category '" + categoryName + "' deleted successfully!");
