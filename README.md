@@ -36,3 +36,20 @@ This project is of particular interest to me since it can be a very helpful tool
 - You can locate my visual component after successfully adding a category or expense from the respective button options.
 - You can save the state of my application by clicking on the save button.
 - You can reload the state of my application by clicking on the load button .
+
+
+*Phase 4: Task 2*
+Logged events:
+Thu Nov 28 19:11:08 PST 2024
+Added category : Bills
+Thu Nov 28 19:11:23 PST 2024
+Added expense for Bills: 30.0 dollars
+Thu Nov 28 19:11:36 PST 2024
+Added category : Shopping
+Thu Nov 28 19:11:48 PST 2024
+Added expense for Shopping: 10.0 dollars
+Thu Nov 28 19:12:06 PST 2024
+Generated report from: 2019-01-01 to 2024-01-01
+Thu Nov 28 19:12:20 PST 2024
+Removed category : Shopping
+Application is exiting...
