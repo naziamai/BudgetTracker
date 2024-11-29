@@ -2,7 +2,11 @@ package ui;
 
 import model.BudgetTracker;
 import model.Category;
+import model.EventLog;
 import model.Report;
+import persistence.JsonReader;
+import persistence.JsonWriter;
+import model.Event;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -15,6 +19,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.Map;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /**
  * Class GUI
  * Represents the graphical user interface for the Budget Tracker application.
@@ -39,6 +48,15 @@ public class GUI {
         JFrame jframe = new JFrame("Budget Tracker");
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.setSize(400, 400);
+
+        // Add a Window Listener for handling quit operations
+        jframe.addWindowListener(new WindowAdapter() {
+            @Override
+                public void windowClosing(WindowEvent e) {
+                    handleQuit(); // Custom quit handling
+            }
+        });
+
 
         // Add main panel to the frame
         jframe.add(mainPanel);
@@ -99,6 +117,8 @@ public class GUI {
             updateCategoryTable((DefaultTableModel) ((JTable) ((JScrollPane) ((JPanel) mainPanel.getComponent(4))
                     .getComponent(0)).getViewport().getView()).getModel());
             cardLayout.show(mainPanel, "CategoryListPage");
+
+            
         });
     
         mainPanel.add(mainPage, "MainPage");
@@ -390,47 +410,47 @@ public class GUI {
 
     private void handleSaveData() {
         try {
-            JSONObject json = budgetTracker.toJson();
-            java.nio.file.Files.write(java.nio.file.Paths.get(DATA_FILE), json.toString().getBytes());
-            JOptionPane.showMessageDialog(null, 
-                    "Data saved successfully!", "Save Data", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, 
-                    "Failed to save data: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JsonWriter jsonWriter = new JsonWriter(DATA_FILE);
+            jsonWriter.open();
+            jsonWriter.write(budgetTracker); // Serialize the BudgetTracker object
+            jsonWriter.close();
+
+            JOptionPane.showMessageDialog(null, "Data saved successfully!",
+                     "Save Data", JOptionPane.INFORMATION_MESSAGE);
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Unable to save data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
 
     //MODIFIES: this;
     //EFFECTS: Read JSON data from file and recreate BudgetTracker
     private void handleLoadData() {
         try {
-            String content = new String(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get(DATA_FILE)));
-            JSONObject json = new JSONObject(content);
+            JsonReader jsonReader = new JsonReader(DATA_FILE);
+            BudgetTracker loadedTracker = jsonReader.read(); // Deserialize the BudgetTracker object
 
-            // Clear current data
+            // Update the current state
             budgetTracker.getListOfCategory().clear();
+            budgetTracker.getListOfCategory().addAll(loadedTracker.getListOfCategory());
             categoryMap.clear();
             categoryDropdown.removeAllItems();
 
-            // Populate categories from loaded data
-            JSONArray categoriesJson = json.getJSONArray("categories");
-            for (int i = 0; i < categoriesJson.length(); i++) {
-                JSONObject categoryJson = categoriesJson.getJSONObject(i);
-                String name = categoryJson.getString("name");
-                double limit = categoryJson.getDouble("limit");
-                Category category = new Category(name, limit);
-                budgetTracker.addCategory(category);
-                categoryMap.put(name, category);
-                categoryDropdown.addItem(name);
+            // Update UI components
+            for (Category category : budgetTracker.getListOfCategory()) {
+                categoryMap.put(category.getName(), category);
+                categoryDropdown.addItem(category.getName());
             }
 
             JOptionPane.showMessageDialog(null, 
                     "Data loaded successfully!", "Load Data", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception ex) {
+        } catch (IOException e) {
             JOptionPane.showMessageDialog(null, 
-                    "Failed to load data: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    "Unable to load data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
 
     /**
      * Modifies: model
@@ -504,4 +524,30 @@ public class GUI {
     
         dialog.setVisible(true);
     }
+
+    /**
+     * Handles the quit operation when the window is closed.
+     */
+    private void handleQuit() {
+        // Print all logged events to the console
+        printLoggedEventsToConsole();
+
+        // Perform any cleanup if necessary (optional)
+        System.out.println("Application is exiting...");
+
+        // Exit the application
+        System.exit(0);
+    }
+
+    /**
+     * Prints all events in the EventLog to the console.
+     */
+    private void printLoggedEventsToConsole() {
+        System.out.println("Logged events:");
+        for (Event event : EventLog.getInstance()) {
+            System.out.println(event);
+        }
+    }
+
+
 }
