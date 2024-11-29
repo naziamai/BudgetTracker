@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * PUT SOMETHING
+ * Keeps track of the events taking place in the program 
  */
 public class EventLog implements Iterable<Event> {
 	/** the only EventLog in the system (Singleton Design Pattern) */
