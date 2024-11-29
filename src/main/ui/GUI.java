@@ -526,7 +526,7 @@ public class GUI {
     }
 
     /**
-     * Handles the quit operation when the window is closed.
+     * Effects: Handles the quit operation when the window is closed.
      */
     private void handleQuit() {
         // Print all logged events to the console
@@ -540,7 +540,7 @@ public class GUI {
     }
 
     /**
-     * Prints all events in the EventLog to the console.
+     * Effects: Prints all events in the EventLog to the console.
      */
     private void printLoggedEventsToConsole() {
         System.out.println("Logged events:");
