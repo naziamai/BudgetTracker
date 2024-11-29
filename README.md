@@ -57,4 +57,5 @@ Removed category : Shopping
 Application is exiting...
 
 *Phase 4: Task 3*
+
 Both the CLI (BudgetTrackerApp) and GUI share similar logic for adding/removing categories and expenses, as well as saving/loading data. Refactoring this shared functionality into reusable utility methods or a shared controller would reduce redundancy and simplify future modifications. Additionally, separate classes could be made for the GUI where each class would separately handle user interactions with specific tasks,  such as UICategories for category management and UIExpenses for expense management. This modular design would improve readability, maintainability, and scalability while adhering to the Single Responsibility Principle. 
