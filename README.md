@@ -39,6 +39,8 @@ This project is of particular interest to me since it can be a very helpful tool
 
 
 *Phase 4: Task 2*
+Sample copy pasted: 
+
 Logged events:
 Thu Nov 28 19:11:08 PST 2024
 Added category : Bills
